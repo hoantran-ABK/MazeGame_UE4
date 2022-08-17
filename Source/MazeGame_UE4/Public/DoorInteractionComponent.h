@@ -4,8 +4,12 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+#include "Curves/CurveFloat.h"
+
 #include "DoorInteractionComponent.generated.h"
 
+
+class ATriggerBox;
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class MAZEGAME_UE4_API UDoorInteractionComponent : public UActorComponent
@@ -16,13 +20,30 @@ public:
 	// Sets default values for this component's properties
 	UDoorInteractionComponent();
 
+	// Called every frame
+	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
+
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
 
-public:	
-	// Called every frame
-	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
+	UPROPERTY(EditAnywhere)
+	FRotator DesiredRotation = FRotator::ZeroRotator;
 
-		
+	FRotator StartRotation = FRotator::ZeroRotator;
+	FRotator FinalRotation = FRotator::ZeroRotator;
+
+	UPROPERTY(EditAnywhere)
+	float TimeToRotate = 1.0f;
+
+	float CurrentRotationTime = 0.0f;
+
+	UPROPERTY(EditAnywhere)
+	ATriggerBox* TriggerBox1;
+
+	UPROPERTY(EditAnywhere)
+	ATriggerBox* TriggerBox2;
+
+	UPROPERTY(EditAnywhere)
+	FRuntimeFloatCurve OpenCurve;
 };
