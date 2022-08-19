@@ -61,6 +61,13 @@ protected:
 	UPROPERTY(EditAnywhere)
 		ASpotLight* LockLight2;
 
-		//AActor* LockLight2;
+	UPROPERTY(EditAnywhere)
+		ASpotLight* ButtonLight1;
+
+	//AActor* LockLight1;
+	UPROPERTY(EditAnywhere)
+		ASpotLight* ButtonLight2;
+
+	//AActor* LockLight2;
 	FLinearColor OffColor;
 };

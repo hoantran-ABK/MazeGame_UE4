@@ -52,12 +52,14 @@ void UDoorInteractionComponent_Locked::TickComponent(float DeltaTime, ELevelTick
 					// TODO : Set a bool to show that Lock1 should be unlocked
 					IsLock1Open = true;
 					LockLight1->SetLightColor(OffColor);
+					ButtonLight1->SetLightColor(OffColor);
 				}
 				else if (TriggerBox2->IsOverlappingActor(PlayerPawn))
 				{
 					// TODO : Set a bool to show that Lock2 should be unlocked
 					IsLock2Open = true;
 					LockLight2->SetLightColor(OffColor);
+					ButtonLight2->SetLightColor(OffColor);
 				}
 			}
 
